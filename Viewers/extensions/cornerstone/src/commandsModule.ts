@@ -247,8 +247,13 @@ function commandsModule({
       commandsManager.run(options, optionsToUse);
     },
     updateStoredSegmentationPresentation: ({ displaySet, type }) => {
-      const { addSegmentationPresentationItem } = useSegmentationPresentationStore.getState();
-
+      const { addSegmentationPresentationItem, clearSegmentationPresentationStore } =
+      useSegmentationPresentationStore.getState();
+      //Focus the current SEG DisplaySet
+      //Do not need to load previous segmentation presentation.
+      //Clear all measurements before loading the current SEG DisplaySet
+      clearSegmentationPresentationStore();
+      commandsManager.run('clearMeasurements');
       const referencedDisplaySetInstanceUID = displaySet.referencedDisplaySetInstanceUID;
       addSegmentationPresentationItem(referencedDisplaySetInstanceUID, {
         segmentationId: displaySet.displaySetInstanceUID,
