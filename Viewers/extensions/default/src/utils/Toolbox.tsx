@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Icons, PanelSection, ToolSettings, Switch, Label, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@ohif/ui-next';
+import { Lock, LockOpen } from 'lucide-react';
 import { useSystem, useToolbar } from '@ohif/core';
 import classnames from 'classnames';
 import { useTranslation } from 'react-i18next';
@@ -280,7 +281,7 @@ export function Toolbox({ buttonSectionId, title }: { buttonSectionId: string; t
           {isAIToolBox && (
             <button
               type="button"
-              className={classnames('ml-2 h-5 w-5 text-primary hover:opacity-80 pointer-events-auto cursor-pointer')}
+              className={classnames('ml-auto h-5 w-5 text-primary hover:opacity-80 pointer-events-auto cursor-pointer')}
               onClick={e => {
                 e.stopPropagation();
                 const next = !isLocked;
@@ -293,7 +294,7 @@ export function Toolbox({ buttonSectionId, title }: { buttonSectionId: string; t
               aria-label={isLocked ? 'Unlock tools' : 'Lock tools'}
               title={isLocked ? 'Unlock tools' : 'Lock tools'}
             >
-              <Icons.Lock className={classnames('h-4 w-4', { 'opacity-40': !isLocked })} />
+              {isLocked ? <Lock className="h-4 w-4" /> : <LockOpen className="h-4 w-4" />}
             </button>
           )}
         </span>
