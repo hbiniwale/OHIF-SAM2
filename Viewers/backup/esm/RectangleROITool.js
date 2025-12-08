@@ -569,8 +569,12 @@ class RectangleROITool extends AnnotationTool {
                 }
                 else {
                     this.isHandleOutsideImage = true;
+                    let pointsInShape = [];
+                    pointsInShape.push({pointIJK: pos1Index});
+                    pointsInShape.push({pointIJK: pos2Index});
                     cachedStats[targetId] = {
                         Modality: metadata.Modality,
+                        pointsInShape: pointsInShape,
                     };
                 }
             }
