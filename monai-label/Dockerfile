@@ -64,4 +64,4 @@ ENV PATH=$PATH":/code/monailabel/scripts"
 
 RUN monailabel apps --download --name radiology --output /code/apps
 EXPOSE 8002
-CMD ["monailabel", "start_server", "--app", "/code/apps/radiology", "--studies", "http://ohif_orthanc:1026/pacs/dicom-web", "--conf", "models", "segmentation", "--conf", "use_pretrained_model", "false", "-p", "8002"]
+CMD ["monailabel", "start_server", "--app", "/code/apps/radiology", "--studies", "http://orthanc:8042/dicom-web", "--conf", "models", "segmentation", "--conf", "use_pretrained_model", "false", "-p", "8002"]
